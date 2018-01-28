@@ -1,10 +1,11 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express')
+const router = express.Router()
+const xmlparser = require('express-xml-bodyparser')
 
 /* GET home page. */
-router.get('/*', function(req, res, next) {
-  console.log(req.query)
-  res.send(req.query.echostr)
+router.get('/*', xmlparser({trim: false, explicitArray:false}), function(req, res, next) {
+  console.log(req.body)
+  res.send('hello')
 });
 
 module.exports = router;
